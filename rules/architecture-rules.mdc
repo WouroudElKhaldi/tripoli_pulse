@@ -1,0 +1,739 @@
+---
+description: System architecture rules for Tripoli Pulse AI
+alwaysApply: true
+---
+
+# TRIPOLI PULSE AI
+# ARCHITECTURE RULES
+# VERSION 1.0
+
+These rules define the mandatory architecture for:
+
+- Informative Website
+- Municipality Dashboard
+- Mobile Application
+- Backend Services
+- Shared Packages
+- AI Services
+
+---
+
+# ARCHITECTURE PHILOSOPHY
+
+The system must be:
+
+- Modular
+- Scalable
+- Maintainable
+- Testable
+- AI-Ready
+- Event-Driven
+- Monorepo Friendly
+- Cloud Deployable
+
+Always optimize for:
+
+1. Developer Experience
+2. Maintainability
+3. Scalability
+4. Reliability
+5. Separation of Concerns
+
+---
+
+# HIGH LEVEL ARCHITECTURE
+
+```txt
+apps/
+├── web
+├── mobile
+├── server
+├── website
+
+packages/
+├── ui
+├── types
+├── api-client
+├── validation
+├── config
+├── constants
+├── hooks
+├── utils
+├── maps
+└── ai
+```
+
+---
+
+# MONOREPO RULES
+
+Use:
+
+TurboRepo
+
+Each application must be independently:
+
+- Buildable
+- Testable
+- Deployable
+
+Applications may depend on packages.
+
+Packages must NEVER depend on applications.
+
+---
+
+# DEPENDENCY DIRECTION
+
+VALID
+
+apps
+↓
+packages
+
+INVALID
+
+packages
+↓
+apps
+
+Never import application code into packages.
+
+---
+
+# SHARED PACKAGES
+
+## ui
+
+Contains:
+
+- Buttons
+- Cards
+- Modals
+- Inputs
+- Layout components
+- Theme system
+- Icons
+
+No business logic.
+
+---
+
+## types
+
+Contains:
+
+- Interfaces
+- Enums
+- DTO contracts
+- Shared models
+
+No runtime code.
+
+---
+
+## api-client
+
+Contains:
+
+- Axios instance
+- API methods
+- Interceptors
+- Authentication handling
+- Error handling
+
+All HTTP communication must pass through this package.
+
+---
+
+## validation
+
+Contains:
+
+- Zod schemas
+- Shared validators
+- Form schemas
+
+---
+
+## config
+
+Contains:
+
+- Environment schemas
+- Constants
+- Runtime configuration
+
+Never directly use process.env.
+
+---
+
+## hooks
+
+Contains:
+
+- Shared React hooks
+- Query hooks
+- Utilities
+
+No UI components.
+
+---
+
+## utils
+
+Contains:
+
+- Helpers
+- Formatters
+- Date functions
+- Math functions
+- Shared utilities
+
+Must remain framework agnostic.
+
+---
+
+## maps
+
+Contains:
+
+- Geospatial utilities
+- Distance calculations
+- Map layers
+- GeoJSON helpers
+
+---
+
+## ai
+
+Contains:
+
+- Prompt builders
+- Embedding helpers
+- Model abstractions
+- Recommendation engines
+- AI utilities
+
+---
+
+# FRONTEND ARCHITECTURE
+
+Each application should use:
+
+Feature-based architecture.
+
+Example:
+
+```txt
+src/
+├── app/
+├── components/
+├── features/
+├── hooks/
+├── services/
+├── stores/
+├── providers/
+├── lib/
+├── constants/
+├── types/
+└── assets/
+```
+
+---
+
+# FEATURE STRUCTURE
+
+Example:
+
+```txt
+features/
+└── reports/
+    ├── components/
+    ├── hooks/
+    ├── services/
+    ├── stores/
+    ├── types/
+    ├── schemas/
+    └── utils/
+```
+
+Features should be isolated.
+
+Avoid cross-feature dependencies.
+
+---
+
+# STATE MANAGEMENT
+
+Use:
+
+Local State
+→ React State
+
+Global UI State
+→ Zustand
+
+Server State
+→ TanStack Query
+
+Forms
+→ React Hook Form + Zod
+
+Never:
+
+Store server responses inside Zustand.
+
+---
+
+# NEXT.JS ARCHITECTURE
+
+Use:
+
+App Router
+
+Structure:
+
+```txt
+app/
+(layout)
+(auth)
+(dashboard)
+api/
+```
+
+Prefer:
+
+Server Components
+
+Use Client Components only when necessary.
+
+---
+
+# REACT NATIVE ARCHITECTURE
+
+Use:
+
+Expo Router
+
+Structure:
+
+```txt
+app/
+(auth)
+(tabs)
+(modals)
+
+src/
+features/
+components/
+hooks/
+services/
+stores/
+```
+
+Navigation must be file-based.
+
+---
+
+# BACKEND ARCHITECTURE
+
+Architecture:
+
+Modular Monolith
+
+Framework:
+
+NestJS
+
+Pattern:
+
+Controller
+→ Service
+→ Repository
+→ Database
+
+Never:
+
+Controller
+→ Database
+
+Never:
+
+Controller
+→ Prisma
+
+---
+
+# MODULE STRUCTURE
+
+```txt
+modules/
+└── reports/
+    ├── controllers/
+    ├── services/
+    ├── repositories/
+    ├── dto/
+    ├── entities/
+    ├── mappers/
+    ├── guards/
+    ├── decorators/
+    └── interfaces/
+```
+
+---
+
+# SERVICE RULES
+
+Services contain:
+
+- Business logic
+- Validation logic
+- Domain rules
+- Transactions
+
+Services should not:
+
+- Render UI
+- Know about HTTP
+- Return framework-specific responses
+
+---
+
+# REPOSITORY RULES
+
+Repositories:
+
+- Access Prisma
+- Build queries
+- Handle transactions
+
+Repositories should not:
+
+- Contain business logic
+- Call external APIs
+- Know authentication details
+
+---
+
+# EVENT-DRIVEN COMMUNICATION
+
+Long-running tasks should use:
+
+Events
+Queues
+Background Jobs
+
+Examples:
+
+ReportCreatedEvent
+ReportResolvedEvent
+DonationCompletedEvent
+PredictionGeneratedEvent
+
+---
+
+# QUEUE RULES
+
+BullMQ must be used for:
+
+- Notifications
+- Image Processing
+- AI Analysis
+- Predictions
+- Recommendation Generation
+- Analytics Exports
+
+Never block HTTP requests.
+
+---
+
+# DATABASE ARCHITECTURE
+
+Database:
+
+PostgreSQL
+
+Extensions:
+
+PostGIS
+pgvector
+
+Guidelines:
+
+- UUID Primary Keys
+- Soft Deletes
+- Audit Timestamps
+- Proper Indexing
+- Transactions
+- Pagination
+
+---
+
+# FILE STORAGE
+
+Images:
+
+Cloudinary
+
+Never store files inside PostgreSQL.
+
+Store only metadata.
+
+---
+
+# AUTHENTICATION
+
+Authentication:
+
+JWT Access Token
+JWT Refresh Token
+
+Authorization:
+
+RBAC
+
+Guards:
+
+JwtGuard
+RolesGuard
+
+Never place authorization logic inside controllers.
+
+---
+
+# API ARCHITECTURE
+
+Pattern:
+
+```txt
+Controller
+↓
+DTO Validation
+↓
+Service
+↓
+Repository
+↓
+Database
+```
+
+Responses:
+
+Standardized:
+
+```json
+{
+  "success": true,
+  "message": "",
+  "data": {},
+  "meta": {}
+}
+```
+
+---
+
+# AI ARCHITECTURE
+
+AI must be provider agnostic.
+
+Never tightly couple to:
+
+- Ollama
+- OpenAI
+- Gemini
+- HuggingFace
+
+Always use adapters.
+
+Example:
+
+```ts
+interface LLMProvider {
+  chat();
+  embeddings();
+  summarize();
+}
+```
+
+---
+
+# COMPUTER VISION
+
+Pattern:
+
+Upload
+↓
+Queue
+↓
+Analysis
+↓
+Store Results
+↓
+Notify User
+
+Never perform vision processing synchronously.
+
+---
+
+# PREDICTION ENGINE
+
+Pipeline:
+
+Data
+↓
+Aggregation
+↓
+Feature Extraction
+↓
+Prediction Model
+↓
+Recommendation Generation
+↓
+Storage
+
+---
+
+# DIGITAL TWIN
+
+Future Architecture:
+
+```txt
+Reports
+Analytics
+Predictions
+Environment Data
+Traffic Data
+Municipality Data
+↓
+Simulation Engine
+↓
+3D Visualization
+```
+
+Digital Twin must remain isolated from core modules.
+
+---
+
+# OBSERVABILITY
+
+Required:
+
+Logging
+Metrics
+Tracing
+Health Checks
+
+Tools:
+
+Pino
+OpenTelemetry
+Sentry
+
+---
+
+# DEPLOYMENT ARCHITECTURE
+
+Containers:
+
+Docker
+
+Services:
+
+```txt
+web
+website
+mobile-build
+server
+postgres
+redis
+ollama
+worker
+nginx
+```
+
+---
+
+# SCALING RULES
+
+Stateless services.
+
+Scale independently:
+
+API
+Workers
+AI Services
+Database Read Replicas
+
+---
+
+# SECURITY RULES
+
+Never:
+
+- Trust client input
+- Expose secrets
+- Allow unrestricted uploads
+- Skip validation
+
+Always:
+
+- Validate DTOs
+- Rate limit APIs
+- Hash passwords
+- Log security events
+- Use HTTPS
+
+---
+
+# FORBIDDEN ARCHITECTURE ANTI-PATTERNS
+
+❌ Fat Controllers
+
+❌ God Services
+
+❌ Circular Dependencies
+
+❌ Shared Mutable State
+
+❌ Business Logic in Components
+
+❌ Direct Database Access from Controllers
+
+❌ Long Running HTTP Requests
+
+❌ Package → App Dependencies
+
+❌ Massive Shared Utility Files
+
+---
+
+# DEFINITION OF DONE
+
+Architecture is considered valid only if:
+
+✅ Modular
+
+✅ Feature Based
+
+✅ Dependency Direction Enforced
+
+✅ Package Boundaries Respected
+
+✅ Event Driven
+
+✅ Queue Enabled
+
+✅ AI Provider Agnostic
+
+✅ Horizontally Scalable
+
+✅ Observable
+
+✅ Production Ready
+
+---
+
+# FINAL RULE
+
+Every new feature must integrate into the existing architecture without requiring major rewrites, preserving clear boundaries, modularity, and long-term scalability.

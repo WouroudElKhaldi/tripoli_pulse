@@ -1,0 +1,1013 @@
+# TRIPOLI PULSE AI
+# MASTER IMPLEMENTATION SPECIFICATION
+# VERSION 1.0
+
+---
+
+# PROJECT NAME
+
+Tripoli Pulse AI
+
+---
+
+# PROJECT DESCRIPTION
+
+Tripoli Pulse AI is an AI-powered urban intelligence platform that helps citizens, municipalities, and NGOs monitor and improve the city of Tripoli through:
+
+- Crowdsourced infrastructure reports
+- Computer vision analysis
+- Smart routing
+- Neighborhood scoring
+- Predictive analytics
+- Digital twin visualization
+- AI-generated recommendations
+- Municipality dashboards
+- Community engagement
+
+This is NOT a generic reporting application.
+
+This product should feel like:
+
+"An Operating System for Tripoli."
+
+Every implementation decision should support this vision.
+
+---
+
+# PRIMARY GOALS
+
+1. Improve city infrastructure visibility
+2. Help municipalities prioritize interventions
+3. Improve citizen engagement
+4. Enable data-driven decisions
+5. Build an extensible smart-city platform
+
+---
+
+# NON-FUNCTIONAL GOALS
+
+The application must be:
+
+- Modern
+- Beautiful
+- Fast
+- Mobile-first
+- Highly scalable
+- Modular
+- Extensible
+- Type-safe
+- Production-ready
+- Accessible
+
+---
+
+# DEVELOPMENT PRINCIPLES
+
+Always prioritize:
+
+1. Simplicity
+2. Scalability
+3. Type safety
+4. Reusability
+5. User experience
+6. Performance
+7. Clean architecture
+
+Never sacrifice maintainability for short-term hacks.
+
+---
+
+# TECHNOLOGY STACK
+
+## Monorepo
+
+Turborepo
+
+---
+
+## Frontend
+
+Next.js
+TypeScript
+TailwindCSS
+Shadcn UI
+Framer Motion
+React Query
+Zustand
+
+---
+
+## Mobile
+
+React Native
+Expo
+React Navigation
+React Query
+Zustand
+React Native Maps
+
+---
+
+## Backend
+
+NestJS
+Prisma
+PostgreSQL
+PostGIS
+pgvector
+Redis
+BullMQ
+Docker
+
+---
+
+## AI
+
+Ollama
+Llama 3
+Gemma
+Sentence Transformers
+YOLOv8
+OpenCV
+
+No paid AI APIs should be required.
+
+The platform must work completely offline from paid services.
+
+Paid services may be added later.
+
+---
+
+# MONOREPO STRUCTURE
+
+apps/
+    web/
+    mobile/
+    api/
+
+packages/
+    ui/
+    types/
+    validation/
+    utils/
+    config/
+    constants/
+    hooks/
+
+docs/
+    architecture/
+    database/
+    api/
+
+---
+
+# FRONTEND RULES
+
+Use:
+
+TypeScript only.
+
+Use: 
+ShadCn UI Components for building the dashboard
+
+Never use:
+
+JavaScript files.
+
+Never use:
+
+any
+
+Prefer:
+
+interfaces
+types
+generics
+
+---
+
+# COMPONENT RULES
+
+Components must:
+
+- Be reusable
+- Be composable
+- Be responsive
+- Be accessible
+- Be typed
+
+Avoid:
+
+Huge components.
+
+Prefer:
+
+Small focused components.
+
+---
+
+# STATE MANAGEMENT
+
+React Query:
+
+Server state only.
+
+Zustand:
+
+Client state only.
+
+Never store server data inside Zustand.
+
+---
+
+# FORMS
+
+Always use:
+
+React Hook Form
+Zod validation
+
+Never manually validate forms.
+
+---
+
+# STYLING
+
+Use:
+
+TailwindCSS
+Shadcn
+
+Avoid:
+
+Inline styles
+CSS files
+Styled components
+
+---
+
+# ANIMATIONS
+
+Use:
+
+Framer Motion
+
+Requirements:
+
+- Smooth transitions
+- Micro interactions
+- Page transitions
+- Loading animations
+- Scroll animations
+
+The UI should feel:
+
+Apple
+Linear
+Stripe
+Vercel
+
+---
+
+# MOBILE APP
+
+The mobile app is citizen-focused.
+
+---
+
+# MOBILE PAGES
+
+Splash
+
+Onboarding
+
+Authentication
+
+Home
+
+Interactive Map
+
+Report Issue
+
+Issue Details
+
+My Reports
+
+Notifications
+
+Profile
+
+Settings
+
+About
+
+Support
+
+---
+
+# MOBILE FEATURES
+
+Authentication
+
+Profile Management
+
+Push Notifications
+
+Location Tracking
+
+Map Exploration
+
+Issue Reporting
+
+Photo Uploads
+
+Voice Notes
+
+Offline Drafts
+
+AI Route Suggestions
+
+Neighborhood Scores
+
+Issue Tracking
+
+AI Recommendations
+
+---
+
+# REPORT ISSUE FLOW
+
+User selects issue type.
+
+User takes photos.
+
+User adds notes.
+
+User pins location.
+
+AI analyzes image.
+
+AI suggests:
+
+Issue Type
+Severity
+Tags
+Recommendations
+
+User confirms.
+
+Report submitted.
+
+---
+
+# REPORT STATUS
+
+Pending
+
+Verified
+
+Assigned
+
+In Progress
+
+Resolved
+
+Rejected
+
+---
+
+# WEB APPLICATION
+
+The web application is municipality-focused.
+
+---
+
+# WEB PAGES
+
+Landing
+
+Login
+
+Dashboard
+
+Reports
+
+Map Center
+
+Neighborhoods
+
+Predictions
+
+Analytics
+
+Digital Twin
+
+Users
+
+Notifications
+
+Payments
+
+Campaigns
+
+Settings
+
+Profile
+
+Audit Logs
+
+---
+
+# DASHBOARD FEATURES
+
+Overview metrics
+
+Charts
+
+Heatmaps
+
+Trends
+
+Recent activity
+
+Predicted hotspots
+
+Neighborhood rankings
+
+AI recommendations
+
+---
+
+# REPORT MANAGEMENT
+
+Search reports
+
+Filter reports
+
+Assign reports
+
+Change status
+
+Merge duplicates
+
+Export reports
+
+View history
+
+Audit changes
+
+---
+
+# MAP CENTER
+
+Layers:
+
+Infrastructure
+
+Waste
+
+Safety
+
+Accessibility
+
+Traffic
+
+Predictions
+
+Neighborhood scores
+
+Features:
+
+Filters
+
+Drawing tools
+
+Clustering
+
+Heatmaps
+
+Geospatial search
+
+---
+
+# DIGITAL TWIN
+
+Purpose:
+
+Visualize Tripoli as a living city.
+
+Features:
+
+Interactive map
+
+Timeline playback
+
+Predictions
+
+Neighborhood metrics
+
+Layer toggles
+
+Issue playback
+
+Trend visualization
+
+---
+
+# AI FEATURES
+
+---
+
+# FEATURE 1
+
+Computer Vision
+
+Input:
+
+Photos
+
+Output:
+
+Issue type
+Severity
+Confidence
+Recommendations
+
+Models:
+
+YOLOv8
+OpenCV
+
+---
+
+# FEATURE 2
+
+Neighborhood Scoring
+
+Calculate:
+
+Infrastructure Score
+
+Safety Score
+
+Accessibility Score
+
+Walkability Score
+
+Cleanliness Score
+
+Scores:
+
+0-100
+
+---
+
+# FEATURE 3
+
+Predictive Analytics
+
+Predict:
+
+Traffic
+
+Waste accumulation
+
+Flood risks
+
+Infrastructure deterioration
+
+Generate:
+
+Risk scores
+
+Priority scores
+
+Trend reports
+
+---
+
+# FEATURE 4
+
+Urban Copilot
+
+Capabilities:
+
+Answer questions
+
+Summarize reports
+
+Generate recommendations
+
+Generate reports
+
+Explain trends
+
+Must use:
+
+Ollama
+Llama
+Gemma
+
+Never depend on paid APIs.
+
+---
+
+# FEATURE 5
+
+Recommendation Engine
+
+Examples:
+
+Repair roads
+
+Increase lighting
+
+Deploy teams
+
+Increase garbage collection
+
+Prioritize schools
+
+Estimate impact
+
+---
+
+# PAYMENTS
+
+Provider:
+
+Areeba
+
+Purposes:
+
+Donations
+
+Sponsorships
+
+NGO funding
+
+Features:
+
+Payment Sessions
+
+Payment Verification
+
+Webhooks
+
+Transaction History
+
+Campaign Management
+
+Donation Analytics
+
+---
+
+# DATABASE
+
+Use PostgreSQL.
+
+Use PostGIS.
+
+Use pgvector.
+
+Never use MongoDB.
+
+Never duplicate data.
+
+Use UUID primary keys.
+
+Use soft deletes where appropriate.
+
+Always include:
+
+createdAt
+updatedAt
+
+---
+
+# MAIN ENTITIES
+
+User
+
+Role
+
+Permission
+
+Neighborhood
+
+IssueType
+
+Report
+
+ReportImage
+
+Prediction
+
+Recommendation
+
+Route
+
+Notification
+
+Campaign
+
+Donation
+
+Payment
+
+Transaction
+
+AuditLog
+
+Settings
+
+---
+
+# API DESIGN
+
+Use REST.
+
+Version all APIs.
+
+Example:
+
+/api/v1/reports
+
+Use:
+
+DTOs
+
+Validation Pipes
+
+Guards
+
+Interceptors
+
+Swagger
+
+Never expose database entities directly.
+
+Always use DTOs.
+
+---
+
+# BACKEND MODULES
+
+Auth
+
+Users
+
+Roles
+
+Permissions
+
+Reports
+
+Maps
+
+Neighborhoods
+
+Predictions
+
+Analytics
+
+Recommendations
+
+Vision
+
+AI
+
+Notifications
+
+Payments
+
+Campaigns
+
+Audit
+
+Settings
+
+Files
+
+Admin
+
+---
+
+# BACKGROUND JOBS
+
+Image Processing
+
+Embedding Generation
+
+Prediction Generation
+
+Heatmap Generation
+
+Notification Delivery
+
+Scheduled Reports
+
+Payment Processing
+
+Recommendation Generation
+
+Cleanup Jobs
+
+Never execute heavy AI tasks synchronously.
+
+Always use BullMQ.
+
+---
+
+# SECURITY
+
+JWT Authentication
+
+Refresh Tokens
+
+Rate Limiting
+
+Helmet
+
+CORS
+
+Password Hashing
+
+RBAC
+
+Audit Logging
+
+Input Validation
+
+File Validation
+
+Image Scanning
+
+Never trust client input.
+
+---
+
+# PERFORMANCE
+
+Pagination everywhere.
+
+Database indexing.
+
+Caching.
+
+Redis.
+
+Image optimization.
+
+Background jobs.
+
+Code splitting.
+
+Lazy loading.
+
+Memoization.
+
+Avoid N+1 queries.
+
+---
+
+# ACCESSIBILITY
+
+Keyboard navigation
+
+Screen readers
+
+High contrast
+
+Proper labels
+
+Color contrast
+
+Responsive layouts
+
+---
+
+# TESTING
+
+Unit Tests
+
+Integration Tests
+
+E2E Tests
+
+Validation Tests
+
+Permission Tests
+
+API Tests
+
+Critical flows must be tested.
+
+---
+
+# CODE QUALITY
+
+ESLint
+
+Prettier
+
+Strict TypeScript
+
+Husky
+
+Lint Staged
+
+Conventional Commits
+
+Never commit broken code.
+
+---
+
+# DO
+
+Build reusable components.
+
+Use feature-based architecture.
+
+Write clean code.
+
+Document APIs.
+
+Keep modules small.
+
+Write types first.
+
+Optimize database queries.
+
+Handle loading states.
+
+Handle empty states.
+
+Handle errors.
+
+Handle permissions.
+
+Think long-term.
+
+---
+
+# DO NOT
+
+Do not use paid AI APIs.
+
+Do not use JavaScript.
+
+Do not use inline styles.
+
+Do not create massive components.
+
+Do not put business logic inside controllers.
+
+Do not store server state in Zustand.
+
+Do not execute AI inside request handlers.
+
+Do not ignore accessibility.
+
+Do not hardcode configuration values.
+
+Do not duplicate code.
+
+Do not skip validation.
+
+Do not skip tests.
+
+Do not build features outside this specification.
+
+---
+
+# DEFINITION OF DONE
+
+A feature is complete only if:
+
+- UI implemented
+- Mobile implemented if applicable
+- Backend implemented
+- Database implemented
+- Validation implemented
+- Permissions implemented
+- Error handling implemented
+- Loading states implemented
+- Empty states implemented
+- Responsive design implemented
+- Tests implemented
+- Documentation updated
+- Types shared across applications
+- APIs documented
+- No TypeScript errors
+- No lint errors
+
+---
+
+# PRODUCT FEEL
+
+When someone opens Tripoli Pulse AI, it should feel like:
+
+"Google Maps + Waze + Notion AI + a Municipality Control Center built specifically for Tripoli."
+
+Every design and engineering decision should move the product closer to this vision.

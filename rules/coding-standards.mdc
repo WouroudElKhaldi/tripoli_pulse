@@ -1,0 +1,720 @@
+---
+description: Global coding standards for Tripoli Pulse AI
+alwaysApply: true
+---
+
+# TRIPOLI PULSE AI
+# CODING STANDARDS
+# VERSION 1.0
+
+These rules apply to ALL applications:
+
+- Web Dashboard
+- Informative Website
+- Mobile App
+- Backend Services
+- Shared Packages
+- AI Services
+
+---
+
+# GENERAL PRINCIPLES
+
+Code must be:
+
+- Readable
+- Maintainable
+- Modular
+- Type-safe
+- Testable
+- Scalable
+- Predictable
+- Self-documenting
+
+Always prioritize:
+
+1. Simplicity
+2. Consistency
+3. Maintainability
+4. Developer Experience
+5. Performance
+
+Never sacrifice maintainability for clever code.
+
+---
+
+# LANGUAGE RULES
+
+## TypeScript
+
+Use:
+
+```ts
+strict: true
+```
+
+Always:
+
+- Use explicit types
+- Use interfaces for contracts
+- Use enums carefully
+- Avoid `any`
+- Prefer `unknown`
+- Enable strict mode
+
+Bad:
+
+```ts
+const user: any = {};
+```
+
+Good:
+
+```ts
+interface User {
+  id: string;
+  email: string;
+}
+```
+
+---
+
+# FILE NAMING
+
+Use:
+
+kebab-case
+
+Examples:
+
+```txt
+report.service.ts
+report.controller.ts
+report.repository.ts
+report.dto.ts
+user-profile.tsx
+notification-card.tsx
+use-report-filters.ts
+```
+
+Never:
+
+```txt
+ReportService.ts
+Report_Service.ts
+reportService.ts
+```
+
+---
+
+# FOLDER NAMING
+
+Use:
+
+kebab-case
+
+Examples:
+
+```txt
+report-management/
+notification-center/
+shared-components/
+```
+
+---
+
+# VARIABLES
+
+Prefer:
+
+```ts
+const reportCount = 10;
+```
+
+Avoid:
+
+```ts
+const rc = 10;
+const data = {};
+```
+
+Names must describe purpose.
+
+---
+
+# FUNCTIONS
+
+Functions should:
+
+- Have one responsibility
+- Be small
+- Be predictable
+- Avoid side effects
+
+Bad:
+
+```ts
+function createUserAndSendEmailAndLog() {}
+```
+
+Good:
+
+```ts
+createUser();
+sendWelcomeEmail();
+logUserCreation();
+```
+
+---
+
+# FUNCTION SIZE
+
+Target:
+
+20 lines or less.
+
+Maximum:
+
+50 lines.
+
+Large functions must be refactored.
+
+---
+
+# COMPONENT RULES
+
+React components should:
+
+- Be focused
+- Be reusable
+- Be composable
+
+Maximum:
+
+300 lines.
+
+Preferred:
+
+150 lines or less.
+
+---
+
+# COMPONENT STRUCTURE
+
+```tsx
+imports
+types
+constants
+hooks
+component
+exports
+```
+
+---
+
+# CUSTOM HOOKS
+
+Complex state must move into hooks.
+
+Good:
+
+```tsx
+use-auth();
+use-report-filters();
+use-notifications();
+use-map-state();
+```
+
+Bad:
+
+500-line component containing all logic.
+
+---
+
+# STATE MANAGEMENT
+
+Local state:
+
+React State
+
+Server state:
+
+TanStack Query
+
+Global state:
+
+Zustand
+
+Forms:
+
+React Hook Form
+
+Never:
+
+- Store server data in Zustand
+- Duplicate state unnecessarily
+
+---
+
+# IMPORT ORDER
+
+```ts
+1. React
+2. External packages
+3. Shared packages
+4. Internal modules
+5. Relative imports
+6. Types
+7. Styles
+```
+
+Example:
+
+```ts
+import React from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { Button } from "@tripoli/ui";
+
+import { useAuth } from "@/hooks/use-auth";
+
+import type { User } from "@/types/user";
+```
+
+---
+
+# TYPES
+
+Prefer:
+
+```ts
+interface User {
+  id: string;
+}
+```
+
+Prefer:
+
+```ts
+type Status =
+  | "pending"
+  | "completed";
+```
+
+Avoid:
+
+```ts
+type User = any;
+```
+
+---
+
+# ENUMS
+
+Use enums only for stable domains.
+
+Good:
+
+```ts
+enum UserRole {
+  CITIZEN,
+  ADMIN
+}
+```
+
+Avoid enums for dynamic values.
+
+---
+
+# API CALLS
+
+Never:
+
+```ts
+fetch("/api");
+```
+
+Always:
+
+```ts
+apiClient.get("/reports");
+```
+
+All requests go through:
+
+```txt
+shared/api-client
+```
+
+---
+
+# ERROR HANDLING
+
+Never:
+
+```ts
+catch (e) {}
+```
+
+Always:
+
+```ts
+catch (error) {
+  logger.error(error);
+  throw error;
+}
+```
+
+---
+
+# LOGGING
+
+Backend:
+
+Pino
+
+Never:
+
+```ts
+console.log()
+```
+
+Always:
+
+```ts
+logger.info()
+logger.warn()
+logger.error()
+```
+
+---
+
+# ENVIRONMENT VARIABLES
+
+Never:
+
+```ts
+process.env.MY_KEY
+```
+
+directly inside business logic.
+
+Always:
+
+```ts
+config.ai.apiKey
+config.database.url
+```
+
+Environment variables must be validated.
+
+---
+
+# VALIDATION
+
+All external input must be validated.
+
+Backend:
+
+```ts
+class-validator
+zod
+```
+
+Frontend:
+
+```ts
+zod
+react-hook-form
+```
+
+Never trust:
+
+- Request body
+- Query params
+- Headers
+- File uploads
+
+---
+
+# DTO RULES
+
+Each endpoint requires:
+
+```txt
+create.dto.ts
+update.dto.ts
+response.dto.ts
+query.dto.ts
+```
+
+Never reuse DTOs incorrectly.
+
+---
+
+# DATABASE RULES
+
+Never:
+
+- Write raw SQL unnecessarily
+- Duplicate business logic
+- Skip transactions
+
+Always:
+
+- Use Prisma
+- Use transactions
+- Use indexes
+- Paginate large queries
+
+---
+
+# ASYNC RULES
+
+Always:
+
+```ts
+await service.create();
+```
+
+Never:
+
+```ts
+service.create();
+```
+
+without handling promise results.
+
+---
+
+# CONCURRENCY
+
+Heavy work:
+
+- AI
+- Emails
+- Notifications
+- Predictions
+- Vision analysis
+
+Must use:
+
+BullMQ
+
+Never execute long jobs inside HTTP requests.
+
+---
+
+# REACT RULES
+
+Avoid:
+
+```tsx
+useEffect(() => {
+  fetchData();
+}, []);
+```
+
+Prefer:
+
+TanStack Query.
+
+---
+
+# STYLING RULES
+
+Use:
+
+TailwindCSS
+
+Prefer:
+
+Reusable components.
+
+Avoid:
+
+Huge inline classes.
+
+Extract reusable patterns.
+
+---
+
+# COMPONENT ORGANIZATION
+
+Prefer:
+
+```txt
+components/
+  ui/
+  shared/
+  features/
+```
+
+---
+
+# SHARED PACKAGES
+
+Never duplicate:
+
+- Types
+- DTOs
+- Constants
+- Utilities
+- Hooks
+
+Use shared packages.
+
+---
+
+# COMMENTS
+
+Avoid:
+
+```ts
+// increment i
+i++;
+```
+
+Use comments only when:
+
+- Explaining intent
+- Explaining decisions
+- Explaining complexity
+
+---
+
+# MAGIC VALUES
+
+Bad:
+
+```ts
+if (status === 4)
+```
+
+Good:
+
+```ts
+if (status === ReportStatus.RESOLVED)
+```
+
+---
+
+# TESTING
+
+Minimum:
+
+- Service tests
+- Utility tests
+- Validation tests
+
+Critical features require:
+
+- Integration tests
+- E2E tests
+
+---
+
+# ACCESSIBILITY
+
+Always:
+
+- Keyboard support
+- Labels
+- Semantic HTML
+- Proper contrast
+- Focus states
+
+---
+
+# PERFORMANCE
+
+Avoid:
+
+- Unnecessary re-renders
+- Deep prop drilling
+- Large contexts
+- Large bundle sizes
+- Unoptimized images
+
+Always:
+
+- Memoize expensive operations
+- Virtualize large lists
+- Lazy load pages
+- Code split features
+
+---
+
+# SECURITY
+
+Never:
+
+- Trust user input
+- Expose secrets
+- Store plaintext passwords
+- Expose stack traces
+
+Always:
+
+- Validate input
+- Sanitize output
+- Hash passwords
+- Rate limit endpoints
+- Generate audit logs
+
+---
+
+# GIT COMMITS
+
+Use:
+
+```txt
+feat:
+fix:
+refactor:
+docs:
+style:
+test:
+chore:
+```
+
+Examples:
+
+feat(reports): add report creation endpoint
+fix(auth): handle refresh token expiration
+refactor(map): extract marker clustering logic
+
+---
+
+# DEFINITION OF DONE
+
+Code is complete only if:
+
+✅ Typed
+
+✅ Validated
+
+✅ Tested
+
+✅ Documented
+
+✅ Logged
+
+✅ Accessible
+
+✅ Responsive
+
+✅ Error handled
+
+✅ Reusable
+
+✅ Production-ready
+
+---
+
+# FINAL RULE
+
+Every file should make another developer say:
+
+"I understand exactly what this does and I can safely modify it."

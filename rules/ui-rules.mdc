@@ -1,0 +1,601 @@
+---
+description: Global UI and UX rules for Tripoli Pulse AI
+alwaysApply: true
+---
+
+# TRIPOLI PULSE AI
+# UI RULES
+# VERSION 1.0
+
+These rules apply to:
+
+- Informative Website
+- Municipality Dashboard
+- Mobile Application
+- Shared UI Components
+
+---
+
+# DESIGN PHILOSOPHY
+
+Tripoli Pulse AI should feel:
+
+- Modern
+- Premium
+- Friendly
+- Fast
+- Intelligent
+- Trustworthy
+- Data Driven
+
+Inspired by:
+
+- Linear
+- Vercel
+- Notion
+- Apple
+- Stripe
+- Arc Browser
+- Airbnb
+
+Avoid old governmental-looking interfaces.
+
+---
+
+# DESIGN PRINCIPLES
+
+Prioritize:
+
+1. Simplicity
+2. Visual Hierarchy
+3. Accessibility
+4. Performance
+5. Delight
+6. Consistency
+
+Every screen should answer:
+
+- Where am I?
+- What can I do?
+- What should I do next?
+
+---
+
+# DESIGN SYSTEM
+
+Primary Color
+
+```txt
+#0F172A
+```
+
+Secondary Color
+
+```txt
+#2563EB
+```
+
+Accent
+
+```txt
+#14B8A6
+```
+
+Success
+
+```txt
+#22C55E
+```
+
+Warning
+
+```txt
+#F59E0B
+```
+
+Danger
+
+```txt
+#EF4444
+```
+
+Background
+
+```txt
+#FFFFFF
+#F8FAFC
+```
+
+Text
+
+```txt
+#0F172A
+#64748B
+```
+
+---
+
+# TYPOGRAPHY
+
+Font:
+
+Inter
+
+Optional Display Font:
+
+Satoshi
+
+Headings:
+
+```txt
+H1: 48px
+H2: 36px
+H3: 30px
+H4: 24px
+```
+
+Body:
+
+```txt
+18px
+16px
+14px
+```
+
+Line Height:
+
+```txt
+1.5
+```
+
+---
+
+# SPACING SYSTEM
+
+```txt
+4
+8
+12
+16
+24
+32
+48
+64
+96
+```
+
+Never use random spacing values.
+
+---
+
+# BORDER RADIUS
+
+```txt
+sm: 8px
+md: 12px
+lg: 16px
+xl: 24px
+2xl: 32px
+```
+
+---
+
+# SHADOWS
+
+Subtle shadows only.
+
+Prefer:
+
+```txt
+shadow-sm
+shadow-md
+shadow-lg
+```
+
+Avoid:
+
+Heavy shadows.
+
+---
+
+# COMPONENT RULES
+
+All components must support:
+
+- Light Theme
+- Dark Theme
+- Loading State
+- Error State
+- Disabled State
+- Keyboard Navigation
+
+---
+
+# BUTTONS
+
+Variants:
+
+Primary
+Secondary
+Outline
+Ghost
+Danger
+
+States:
+
+Default
+Hover
+Pressed
+Loading
+Disabled
+
+Buttons must:
+
+- Have transitions
+- Display loading indicators
+- Have focus states
+
+---
+
+# INPUTS
+
+Inputs must:
+
+- Display labels
+- Display helper text
+- Display errors
+- Support validation states
+- Support keyboard navigation
+
+Never rely only on placeholders.
+
+---
+
+# CARDS
+
+Cards should:
+
+- Have padding
+- Rounded corners
+- Hover effects
+- Clear hierarchy
+
+Use cards heavily.
+
+---
+
+# ICONS
+
+Library:
+
+Lucide Icons
+
+Rules:
+
+- 20px
+- 24px
+- Consistent stroke width
+
+Never mix icon libraries.
+
+---
+
+# ANIMATIONS
+
+Animation Philosophy:
+
+Subtle and purposeful.
+
+Never animate everything.
+
+---
+
+# DASHBOARD ANIMATIONS
+
+Allowed:
+
+- Fade In
+- Slide Up
+- Number Count
+- Hover Elevation
+- Skeleton Loading
+- Tab Transitions
+
+Duration:
+
+```txt
+150ms
+200ms
+300ms
+```
+
+---
+
+# MOBILE ANIMATIONS
+
+Allowed:
+
+- Screen transitions
+- Bottom sheet transitions
+- Pull-to-refresh
+- Progress animations
+- Success animations
+
+Avoid:
+
+- Excessive parallax
+- Heavy particle systems
+
+---
+
+# WEBSITE ANIMATIONS
+
+Website should feel premium.
+
+Allowed:
+
+- Scroll reveal
+- Parallax
+- Mouse reactive gradients
+- Floating elements
+- Animated statistics
+- Morphing backgrounds
+- Timeline animations
+- Animated maps
+- Section transitions
+- Smooth page transitions
+
+Libraries:
+
+Framer Motion
+GSAP
+Lenis
+
+---
+
+# PAGE STRUCTURE
+
+Every page should follow:
+
+```txt
+Header
+↓
+Content
+↓
+Actions
+↓
+Footer
+```
+
+---
+
+# EMPTY STATES
+
+Every feature requires:
+
+- Empty state
+- Loading state
+- Error state
+
+Never show blank pages.
+
+---
+
+# TABLES
+
+Requirements:
+
+- Sorting
+- Filtering
+- Pagination
+- Search
+- Row Actions
+- Responsive layout
+
+---
+
+# MAP DESIGN
+
+Map should support:
+
+- Dark Mode
+- Light Mode
+- Clustering
+- Heatmaps
+- Layer Toggles
+- Marker States
+
+Markers:
+
+Pending
+Verified
+In Progress
+Resolved
+
+Each state needs a different color.
+
+---
+
+# DASHBOARD LAYOUT
+
+```txt
+Top Navigation
+Sidebar
+Page Header
+Content Area
+Right Utility Panel (optional)
+```
+
+Responsive:
+
+Desktop First
+
+---
+
+# MOBILE LAYOUT
+
+```txt
+Stack Navigation
+Bottom Tabs
+Modal Sheets
+Floating Actions
+```
+
+Bottom Tabs:
+
+Home
+Map
+Report
+Campaigns
+Profile
+
+---
+
+# RESPONSIVENESS
+
+Breakpoints:
+
+```txt
+sm: 640px
+md: 768px
+lg: 1024px
+xl: 1280px
+2xl: 1536px
+```
+
+Requirements:
+
+Desktop
+Tablet
+Mobile
+
+---
+
+# ACCESSIBILITY
+
+Required:
+
+WCAG AA
+
+Support:
+
+- Screen readers
+- Keyboard navigation
+- Focus indicators
+- Proper contrast
+- Semantic HTML
+
+Never use color alone to communicate meaning.
+
+---
+
+# LOADING EXPERIENCES
+
+Prefer:
+
+Skeleton loaders.
+
+Avoid:
+
+Spinners everywhere.
+
+---
+
+# FEEDBACK
+
+All user actions require feedback.
+
+Examples:
+
+Success Toast
+Error Toast
+Progress Indicator
+Confirmation Modal
+
+---
+
+# MICROINTERACTIONS
+
+Use for:
+
+- Button hover
+- Card hover
+- Successful report creation
+- Donation completion
+- Achievement unlocks
+- Companion growth
+
+Keep under:
+
+```txt
+300ms
+```
+
+---
+
+# DESIGN TOKENS
+
+All colors, spacing, typography and shadows must come from:
+
+```txt
+packages/ui
+packages/theme
+```
+
+Never hardcode design values.
+
+---
+
+# FORBIDDEN UI PATTERNS
+
+❌ Nested Modals
+
+❌ Tiny Click Targets
+
+❌ Infinite Scroll Everywhere
+
+❌ Horizontal Scrolling Tables on Mobile
+
+❌ Inconsistent Button Styles
+
+❌ Multiple Floating Buttons
+
+❌ Heavy Animations in Dashboard
+
+❌ Cluttered Government Forms
+
+❌ Random Colors
+
+❌ Random Border Radius
+
+---
+
+# DEFINITION OF DONE
+
+UI is complete only if:
+
+✅ Responsive
+
+✅ Accessible
+
+✅ Consistent
+
+✅ Animated Appropriately
+
+✅ Loading States Included
+
+✅ Error States Included
+
+✅ Empty States Included
+
+✅ Dark Mode Supported
+
+✅ Mobile Friendly
+
+✅ Production Ready
+
+---
+
+# FINAL RULE
+
+Every screen should feel like a modern, premium smart-city platform rather than a traditional municipal system. The experience should make citizens trust the platform and enjoy using it while giving municipality operators powerful tools without overwhelming complexity.
